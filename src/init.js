@@ -112,8 +112,6 @@ function boundaryDrawing(data) {
         let bounds = path.bounds(data),
             topLeft = bounds[0],
             bottomRight = bounds[1];
-console.log(bounds);
-console.log(path);
         svg.attr("width", bottomRight[0] - topLeft[0])
             .attr("height", bottomRight[1] - topLeft[1])
             .style("left", topLeft[0] + "px")
@@ -164,16 +162,16 @@ $.getJSON('/data/beijingBoundary.json',function (data) {
     boundaryDrawing(data);
 })
 
-$.getJSON('./data/bjDistrict.json',function(data){
+/*$.getJSON('./data/bjDistrict.json',function(data){
     $.each(data,function (i,item) {
         //console.log(item.c);
         L.circle([item.cp[1],item.cp[0]], item.population*10, {
-            color: 'none',
-            fillColor: '#1e56ab',
+            color: '#8d9eeb',
+            fillColor: '#1750a7',
             fillOpacity: 0.5
         }).addTo(mymap);
     });
-});
+});*/
 /*$.getJSON('./data/test.json',function(data){
     $.each(data,function (i,item) {
         console.log(item.c);
@@ -187,16 +185,63 @@ $.getJSON('./data/bjDistrict.json',function(data){
     });
 });*/
 
-$.getJSON('/data/test.json',function (data) {
+/*$.getJSON('/data/test1.json',function (data) {
     $.each(data,function (i,item) {
         let qlng = (item.from[0]+item.to[0])/2+(item.from[1]-item.to[1])/6;
         let qlat = (item.from[1]+item.to[1])/2+(item.to[0]-item.from[0])/6;
         L.curve([
             'M',[item.from[1],item.from[0]],
             'Q',[qlat,qlng],[item.to[1],item.to[0]]
-        ], {color:'#6ca8ff',
+        ], {color:'#6da6fd',
             weight:item.value
         }).addTo(mymap);
     })
+})*/
+
+function  drawnodes(nodes) {
+    $.each(nodes,function (i,node) {
+        //console.log(item.c);
+        L.circle([node.y,node.x], node.stay_device_num*10, {
+            color: '#8d9eeb',
+            fillColor: '#1750a7',
+            fillOpacity: 0.5
+        }).addTo(mymap);
+    });
+}
+
+function drawedges(edges) {
+    $.each(edges,function (i,item) {
+       // console.log(item.c);
+        new L.polyline([
+            [item.from_y,item.from_x],
+            [item.to_y,item.to_x]], {
+            color: '#6ca8ff',
+            opacity: 0.5
+           // weight: item.value
+        }).addTo(mymap);
+    });
+}
+function process(data) {
+    $.each(data.edges,function (i , link) {
+        var nodes = data.nodes;
+        for(var i = 0; i<nodes.length;i++){
+            if(link.from_nid == nodes[i].nid){
+                link.from_x = nodes[i].x;
+                link.from_y = nodes[i].y;
+            }
+            if(link.to_nid == nodes[i].nid){
+                link.to_x = nodes[i].x;
+                link.to_y = nodes[i].y;
+            }
+        }
+    });
+    return data.edges;
+}
+$.getJSON('/data/sample.json',function (data) {
+    let nodes = data.nodes;
+    let links = data.edges;
+    drawnodes(nodes);
+    let edges = process(data);
+    drawedges(edges);
 })
 
