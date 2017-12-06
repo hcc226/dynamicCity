@@ -23,15 +23,21 @@ module.exports = {
     module: {
         //加载器配置
         loaders: [
+            {  test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                } },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
-            { test: /\.js$/, loader: 'jsx-loader?harmony' },
             { test: /\.scss$/, loader: 'style!css!sass?sourceMap'},
-            { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
+            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=8192'}
         ]
     },
     //其它解决方案配置
     resolve: {
         alias: {
+            'vue':'vue/dist/vue.js',
             AppStore : 'js/stores/AppStores.js',
             ActionType : 'js/actions/ActionType.js',
             AppAction : 'js/actions/AppAction.js'

@@ -1,4 +1,37 @@
 extends layout
 
 block content
-  div(id = "mapid")
+  div(id='title')
+    p Dynamic Urban Mobility Network
+  div(id='maindiv')
+    div(id='userpanel')
+      fieldset
+        hr
+        div(class="form-group")
+          div(class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-MM-dd - HH:ii p" data-link-field="dtp_input1")
+            input(class="form-control" id = "starttime" size="16" type="text" value="2016-July-05" readonly)
+            span(class="input-group-addon")
+              span(class="glyphicon glyphicon-remove")
+            span(class="input-group-addon")
+              span(class="glyphicon glyphicon-th")
+      div(id='hour-selector')
+      span(@click='addMap' class = "glyphicon glyphicon-plus" )
+      i-select(v-model="stay_default" style="width:100px")
+        i-option(:value="item.value"  key="item.value" v-for="item in stay_type" )
+      i-select(v-model="travel_default" style="width:200px" @on-change="changeTravelType(travel_default)")
+        i-option(:value="item.value"  key="item.value" v-for="item in travel_type" )
+    div(:class="mapClass" v-for="(item,index) in mapObj" )
+      div(:id = "'map' +index" class="vamap")
+      div(:id = "'flowOption' +index" class="flow")
+        form
+          label
+            input(name = "flowOption" type ="radio" value="in" checked="checked" @click='changeFlow(index,"in")')
+            a(style="color:orange") in
+          br
+          label
+            input(name = "flowOption" type ="radio" value="out" @click='changeFlow(index,"out")')
+            a(style="color:orange") out
+        br
+        br
+        vue-slider(ref="slider" v-model = "item.visulRadius" @drag-end='radiusUpdate(index)')
+

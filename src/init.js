@@ -1,247 +1,495 @@
-//document.getElementById('title').style.color='red';
-function projectPoint(x, y) {
-    let point = mymap.latLngToLayerPoint(new L.LatLng(y, x));
-    this.stream.point(point.x, point.y);
-}
-function boundaryDrawing(data) {
-    /*let self = this,
-        city = prop['city'],
-        type = extraInfoIndex(prop['etype']),
-        onlyBound = prop['boundary'],
-        statsdata = stats[city],
-        numid = self.ides.mapid.slice(-1),
-        svgid = `boundSVG`,
-        aoiid = `aoiCanvas${self.ides.mapid}`;
+//import {maps} from './prop'
+import {mapview} from './drawMap/mapLayout'
+import {objClone} from './processData/processData'
+import Vue from 'vue'
+import * as d3 from 'd3'
+import vueSlider from 'vue-slider-component'
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+import {getdata,getdistrictData,getBoundary} from './processData/getData'
 
-    if (!update) {
-        this.setBoundData(data);
-    } else {
-        data = this.getBoundData();
+Vue.use(iView);
+var starttime = "2016-July-05-07:00";
+var end_time = "2016-July-05-09:00";
+$(function () {
+    $(".form_datetime").datetimepicker({
+        language: "zh-CN",
+        format: "yyyy-MM-dd",
+        autoclose: true,
+        todayBtn: true,
+        startDate: "2016-07-05 00:00",
+        minView:"month"
+
+    }).on('changeDate', function(ev){
+
+        starttime = $("#starttime").val();
+        end_time = $("#endtime").val();
+        //changeTime(starttime,end_time);
+        console.log(starttime)
+        console.log(end_time)
+    });
+});
+var months = {'July':'07','August':'08','September':'09'};
+var map = [];
+console.log(maps)
+var maps = {
+    'mapObj' : [{
+        'id': {
+            'card': 'card0',
+            'map': 'map0',
+            'tab': 'tab0'
+        },
+        'visualRadius':60
     }
-
-    d3.select(`#${svgid}`).remove();
-    if (onlyBound) {
-        d3.select(`#${aoiid}`).remove();
-    }
-
-    if (!onlyBound) {
-        this.clearLayers();
-    }
-
-    let range = d3.extent(Object.values(statsdata).map((val) => {
-        return val[type];
-})),
-    vmin = range[1] * prop['slider'][0] / 100.0,
-        vmax = range[1] * prop['slider'][1] / 100.0,
-        color = d3.scaleLinear().domain([vmin, vmax, range[1]])
-            .range(["rgba(255,255,255,0.5)", "rgba(255, 0, 0, 0.9)", "rgba(255, 0, 0, 0.9)"]),
-        */
-    let svgid = `boundSVG`
-    let svg = d3.select(mymap.getPanes().overlayPane).append("svg").attr('id', svgid),
-        g = svg.append("g").attr("class", "leaflet-zoom-hide");
-
-    // console.log('vmin', vmin, 'vmax', vmax);
-
-    let transform = d3.geoTransform({point: projectPoint}),
-        path = d3.geoPath().projection(transform);
-
-    let feature = g.selectAll("path")
-        .data(data.features)
-        .enter().append("path")
-        .attr('fill', function (d) {
-            /*let name = d.properties.name,
-                val = statsdata[name][type];
-            return onlyBound || val < vmin ? 'none' : color(val);*/
-            return 'none';
-        })
-        .attr('stroke', 'black')
-        .style("stroke-dasharray", "4 5")
-        .attr("stroke-width", 1.2);
-
-    /*if (!onlyBound) {
-        feature.on("mouseover", function(d) {
-            let name = d.properties.name;
-
-            d3.select(`#carddistrict${numid}`).html(name);
-            d3.select(`#cardenps${numid}`).html(statsdata[name][type]);
-        })
-            .on("mouseout", function(d) {
-                d3.select(`#carddistrict${numid}`).html('Null');
-                d3.select(`#cardenps${numid}`).html('Null');
-            });
-
-        self.drawGridLegend(`Content`, color);
-    }*/
-
-
-    /*let text = g.selectAll('text')
-        .data(data.features)
-        .enter().append('text')
-        .style("font-family", "sans-serif")
-        .style("font-size", "1rem")
-        .attr("text-anchor", "middle")
-        .text(function(d) {
-            let name = d['properties']['english'];
-            if (name) {
-                return name
-            }
-            return d['properties']['name'];
-        })
-        .attr('x', function(d) {
-            let p = d['properties']['cp'];
-            return self.map.latLngToLayerPoint(new L.LatLng(p[1], p[0])).x;
-        })
-        .attr('y', function(d) {
-            let p = d['properties']['cp'];
-            return self.map.latLngToLayerPoint(new L.LatLng(p[1], p[0])).y - 20;
-        });*/
-
-    mymap.on("viewreset", reset);
-    mymap.on("zoomstart",function(){
-        svg.selectAll('.boundSVG')
-            .style('display','none');
-    });
-
-    mymap.on("zoomend",function() {
-       reset();
-    });
-        reset();
-
-    // Reposition the SVG to cover the features.
-    function reset() {
-        let bounds = path.bounds(data),
-            topLeft = bounds[0],
-            bottomRight = bounds[1];
-        svg.attr("width", bottomRight[0] - topLeft[0])
-            .attr("height", bottomRight[1] - topLeft[1])
-            .style("left", topLeft[0] + "px")
-            .style("top", topLeft[1] + "px");
-
-        g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
-
-        feature.attr("d", path);
-        /*text.data(data.features)
-            .attr('x', function(d) {
-                let p = d['properties']['cp'];
-                return self.map.latLngToLayerPoint(new L.LatLng(p[1], p[0])).x;
-            })
-            .attr('y', function(d) {
-                let p = d['properties']['cp'];
-                return self.map.latLngToLayerPoint(new L.LatLng(p[1], p[0])).y;
-            });
-    }*/
-
-        // Use Leaflet to implement a D3 geometric transformation.
-
-    }
-}
-function pathData(point1,point2) {
-            var x1,y1,x2,y2,r1,r2,dis;
-            var xc,yc;
-            x1 = point1.x;
-            y1 = point1.y;
-            x2 = point2.x;
-            y2 = point2.y;
-            xc=(x1+x2)/2+(y1-y2)/8;
-            yc=(y1+y2)/2+(x2-x1)/8;
-            return [
-                'M', x1, ' ', y1,
-                'Q', xc, ' ', yc,' ',x2, ' ', y2
-            ].join('');
+    ],
+'stay_type':[ {
+    value: 'District',
+    label: 'District'
+},
+    {
+        value: 'POI',
+        label: 'POI'
+    },
+    {
+        value: 'GRID',
+        label: 'GRID'
+    }],
+    'stay_default':'District',
+    'travel_type':[ {
+        value: 'District-District',
+        label: 'DD'
+    },
+        {
+            value: 'District-POI',
+            label: 'DP'
+        },
+        {
+            value: 'POI-POI',
+            label: 'PP'
+        },
+        {
+            value: 'POI-Grid',
+            label: 'PG'
+        },
+        {
+            value: 'District-Grid',
+            label: 'DG'
+        },
+        {
+            value: 'Grid-Grid',
+            label: 'GG'
+        }],
+    'travel_default':'District-District'
 }
 
-var mymap = L.map('mapid').setView([40.2, 116.3], 9);
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.light',
-    accessToken: 'pk.eyJ1IjoiaGNjMjI2IiwiYSI6ImNqOTlucndyYTB2OWMycXFtOTJyYnR3eTIifQ.yHWmhPWtxqseKfBZfpRvWA'
-}).addTo(mymap);
-
-$.getJSON('/data/beijingBoundary.json',function (data) {
-    boundaryDrawing(data);
-})
-
-/*$.getJSON('./data/bjDistrict.json',function(data){
-    $.each(data,function (i,item) {
-        //console.log(item.c);
-        L.circle([item.cp[1],item.cp[0]], item.population*10, {
-            color: '#8d9eeb',
-            fillColor: '#1750a7',
-            fillOpacity: 0.5
-        }).addTo(mymap);
-    });
-});*/
-/*$.getJSON('./data/test.json',function(data){
-    $.each(data,function (i,item) {
-        console.log(item.c);
-        new L.polyline([
-            [item.from[1],item.from[0]],
-            [item.to[1],item.to[0]]], {
-            color: '#6ca8ff',
-            opacity: 0.5,
-            weight: item.value
-        }).addTo(mymap);
-    });
-});*/
-
-/*$.getJSON('/data/test1.json',function (data) {
-    $.each(data,function (i,item) {
-        let qlng = (item.from[0]+item.to[0])/2+(item.from[1]-item.to[1])/6;
-        let qlat = (item.from[1]+item.to[1])/2+(item.to[0]-item.from[0])/6;
-        L.curve([
-            'M',[item.from[1],item.from[0]],
-            'Q',[qlat,qlng],[item.to[1],item.to[0]]
-        ], {color:'#6da6fd',
-            weight:item.value
-        }).addTo(mymap);
-    })
-})*/
-
-function  drawnodes(nodes) {
-    $.each(nodes,function (i,node) {
-        //console.log(item.c);
-        L.circle([node.y,node.x], node.stay_device_num*10, {
-            color: '#8d9eeb',
-            fillColor: '#1750a7',
-            fillOpacity: 0.5
-        }).addTo(mymap);
-    });
-}
-
-function drawedges(edges) {
-    $.each(edges,function (i,item) {
-       // console.log(item.c);
-        new L.polyline([
-            [item.from_y,item.from_x],
-            [item.to_y,item.to_x]], {
-            color: '#6ca8ff',
-            opacity: 0.5
-           // weight: item.value
-        }).addTo(mymap);
-    });
-}
 function process(data) {
-    $.each(data.edges,function (i , link) {
+    var res = [];
+    $.each(data.edges,function (j , edge) {
+        /*if(j >500){
+            return res;
+        }*/
         var nodes = data.nodes;
-        for(var i = 0; i<nodes.length;i++){
-            if(link.from_nid == nodes[i].nid){
-                link.from_x = nodes[i].x;
-                link.from_y = nodes[i].y;
-            }
-            if(link.to_nid == nodes[i].nid){
-                link.to_x = nodes[i].x;
-                link.to_y = nodes[i].y;
+        var link =  edge;
+        //console.log(link.from_nid)
+        var count = 0;
+        if(link.to_nid === 438){
+            for(var i = 0; i<nodes.length;i++){
+                //console.log(nodes[i].nid)
+                if(nodes[i].id === 438 ){
+                    count ++;
+                    //console.log("found!")
+                    link.to_x = nodes[i].x;
+                    link.to_y = nodes[i].y;
+                    break;
+                }
             }
         }
+        for(var i = 0; i<nodes.length;i++){
+            //console.log(nodes[i].nid)
+            if(link.from_nid === nodes[i].id){
+                count ++;
+                //console.log("found!")
+                link.from_x = nodes[i].x;
+                link.from_y = nodes[i].y;
+                break;
+               // res.push(link);
+            }
+        }
+       /* for(var i = 0; i<nodes.length;i++){
+            //console.log(nodes[i].nid)
+            if(link.to_nid === 438 || link.to_nid === 603){
+                count ++;
+                //console.log("found!")
+                link.to_x = nodes[i].x;
+                link.to_y = nodes[i].y;
+                break;
+            }
+        }*/
+        if(count == 2)res.push(link);
     });
-    return data.edges;
+    console.log(res);
+    return res;
 }
-$.getJSON('/data/sample.json',function (data) {
-    let nodes = data.nodes;
-    let links = data.edges;
-    drawnodes(nodes);
-    let edges = process(data);
-    drawedges(edges);
+function process1(data) {
+    var res = [];
+    $.each(data.edges,function (j , edge) {
+        /*if(j >500){
+            return res;
+        }*/
+        var nodes = data.nodes;
+        var link =  edge;
+        //console.log(link.from_nid)
+        var count = 0;
+        if(link.from_nid === 438){
+            for(var i = 0; i<nodes.length;i++){
+                if(nodes[i].id === 438 ){
+                    count++;
+                    link.from_x = nodes[i].x;
+                    link.from_y = nodes[i].y;
+                }
+            }
+        }
+
+       /* for(var i = 0; i<nodes.length;i++){
+            //console.log(nodes[i].nid)
+            if(link.from_nid === 438 || link.from_nid === 603 ){
+                count ++;
+                //console.log("found!")
+                link.from_x = nodes[438].x;
+                link.from_y = nodes[438].y;
+                break;
+                // res.push(link);
+            }
+        }*/
+        for(var i = 0; i<nodes.length;i++){
+            //console.log(nodes[i].nid)
+            if(link.to_nid === nodes[i].id){
+                count ++;
+                //console.log("found!")
+                link.to_x = nodes[i].x;
+                link.to_y = nodes[i].y;
+                break;
+            }
+        }
+        if(count == 2)res.push(link);
+    });
+    console.log(res);
+    return res;
+}
+function process2(data) {
+    var res = [];
+    $.each(data.edges,function (j , edge) {
+        /*if(j >500){
+            return res;
+        }*/
+        var nodes = data.nodes;
+        var link =  edge;
+        //console.log(link.from_nid)
+
+            for(var i = 0; i<nodes.length;i++){
+                if(nodes[i].id === link.from_nid ){
+                    link.from_x = nodes[i].x;
+                    link.from_y = nodes[i].y;
+                }
+            }
+        for(var i = 0; i<nodes.length;i++){
+            //console.log(nodes[i].nid)
+            if(link.to_nid === nodes[i].id){
+                //console.log("found!")
+                link.to_x = nodes[i].x;
+                link.to_y = nodes[i].y;
+                break;
+            }
+        }
+        res.push(link);
+    });
+    console.log(res);
+    return res;
+}
+
+
+const userpannel = new Vue({
+    el:'#maindiv',
+    data:maps,starttime, end_time, map,
+    components:{
+        vueSlider
+},
+    methods:{
+        'addMap':function () {
+            let self = this;
+            let index = maps.mapObj.length;
+            let obj   = objClone(maps.mapObj[index-1]);
+            obj.id.card = 'card${index}';
+            obj.id.map = 'map{index}';
+            obj.id.tab = 'tab{index}';
+            maps.mapObj.push(obj);
+            console.log('map'+index.toString());
+           // this.drawmap(self);
+        },
+        'changeTime':function (starttime,end_time) {
+            console.log("changetime function")
+        },
+        'getOverview':function (begintime,endtime) {
+            var get_url = "http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime="+begintime+"&endTime="+endtime;
+            console.log(get_url);
+            $.ajax({
+                /* url:'http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime=2016-07-05+03%3A30%3A00&endTime=2016-07-05+06%3A05%3A00',*/
+                url:get_url,
+                type:'GET',
+                contentType:"application/json",
+                dataType:'jsonp',
+                success:function (dt) {
+                    console.log(dt);
+                    var lines = process(dt);
+                    //lines = [];
+                    console.log(lines);
+                    map[0].drawMigration(dt,lines);
+                } });
+
+        },
+        'changeFlow':function (index,flag) {
+            console.log("changeflow")
+            console.log(index)
+          map[index].changeFlow(flag);
+        },
+        'radiusUpdate':function (index) {
+            console.log(maps.mapObj[index].visulRadius)
+            let radius = maps.mapObj[index].visulRadius;
+            map[index].changeVisualRadius(radius);
+        },
+        'changeTravelType':function (travel_type) {
+            if(travel_type == "Grid-Grid"){
+                console.log(travel_type);
+                var start_hour = "07:00:00",end_hour = "08:05:00";
+                var start_month = months[starttime.split('-')[1]];
+                var begintime = starttime.split('-')[0]+"-"+start_month+"-"+starttime.split('-')[2]+"+"+start_hour;
+                //var end_month = months[end_time.split('-')[1]];
+                var endtime = starttime.split('-')[0]+"-"+start_month+"-"+starttime.split('-')[2]+"+"+end_hour;
+                var get_url = "http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime="+begintime+"&endTime="+endtime;
+                $.ajax({
+                    url:get_url,
+                    type:'GET',
+                    contentType:"application/json",
+                    dataType:'jsonp',
+                    success:function (dt) {
+                        console.log(dt);
+                        var lines = process(dt);
+                        var lines1 = process1(dt);
+                        //lines = [];
+                        console.log(lines);
+                        console.log(lines1);
+                        map[0].drawMigration(dt,lines,lines1);
+                    } });
+            }
+            else if(travel_type == "District-District"){
+                $.getJSON('/data/beijingBoundary.json',function (dt) {
+                    map[0].drawBoundary(dt);
+                    $.getJSON('/data/sample.json',function (dt1) {
+                        map[0].drawDistrict(dt1,dt);
+                        var lines = process2(dt1);
+                        var lines1 = process1(dt1);
+                        map[0].drawDisDis(dt1,lines,lines1);
+                    })
+                });
+            }
+
+        }
+
+    
+    },
+    computed:{
+        mapClass:function () {
+            let mapNumber = maps.mapObj.length;
+            if(mapNumber == 1){
+                return 'onemap';
+            }else if(mapNumber == 2){
+                return 'twomap';
+            }else{
+                return 'formap';
+            }
+        }
+    },
+    mounted() {
+        console.log("mounted")
+        var margin = {top: 20, right: 10, bottom: 20, left: 4},
+            width = 330- margin.left - margin.right,
+            height = 60 - margin.top - margin.bottom;
+
+        var x = d3.scaleLinear()
+            .domain([6, 24])
+            .rangeRound([0, width]);
+
+        var svg = d3.select("body").select("#hour-selector").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        svg.append("g")
+            .attr("class", "axis axis--grid")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x)
+                .ticks(20)
+                .tickSize(-height)
+                .tickFormat(function() { return null; }))
+            .selectAll(".tick")
+            .classed("tick--minor", function(d) { return d; });
+
+        svg.append("g")
+            .attr("class", "axis axis--x")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x)
+                .ticks(20)
+                .tickPadding(0))
+            .attr("text-anchor", null)
+            .selectAll("text")
+            .attr("x", 0);
+
+        svg.append("g")
+            .attr("class", "brush")
+            .call(d3.brushX()
+                .extent([[0, 0], [width, height]])
+                .on("brush", brushed)
+                .on("end",draw))
+            .call(d3.brushX().move,[18,35])
+        var d0,d1;
+        var start_hour = "07:00:00",end_hour = "08:05:00";
+        var count = 0;
+        function brushed() {
+            if (d3.event.sourceEvent.type === "brush") return;
+            d0 = d3.event.selection.map(x.invert);
+                d1 = d0.map(Math.round);
+            console.log(d1);
+            // If empty when rounded, use floor instead.
+            if (d1[0] >= d1[1]) {
+                d1[0] = Math.floor(d0[0]);
+                d1[1] = Math.offset(d1[0]);
+            }
+
+            d3.select(this).call(d3.event.target.move, d1.map(x));
+            start_hour = d1[0];
+            end_hour = d1[1];
+            if(start_hour<10){
+                start_hour = "0"+start_hour.toString()+":00"+":00";
+            }
+            else{
+                start_hour = start_hour.toString()+":00"+":00";
+            }
+            if(end_hour<10){
+                end_hour = "0"+end_hour.toString()+":05"+":00";
+            }
+            else{
+                end_hour = end_hour.toString()+":05"+":00";
+            }
+        }
+        function draw() {
+            var start_month = months[starttime.split('-')[1]];
+            var begintime = starttime.split('-')[0]+"-"+start_month+"-"+starttime.split('-')[2]+"+"+start_hour;
+            //var end_month = months[end_time.split('-')[1]];
+            var endtime = starttime.split('-')[0]+"-"+start_month+"-"+starttime.split('-')[2]+"+"+end_hour;
+            var get_url = "http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime="+begintime+"&endTime="+endtime;
+            console.log(get_url);
+            $.ajax({
+                /* url:'http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime=2016-07-05+03%3A30%3A00&endTime=2016-07-05+06%3A05%3A00',*/
+                url:get_url,
+                type:'GET',
+                contentType:"application/json",
+                dataType:'jsonp',
+                success:function (dt) {
+                    console.log(dt);
+                    var lines = process(dt);
+                    var lines1 = process1(dt);
+                    //lines = [];
+                    console.log(lines);
+                    console.log(lines1);
+                    map[0].drawMigration(dt,lines,lines1);
+                } });
+        }
+
+      let self = this;
+      this.$nextTick(function () {
+          map[0] = new mapview('map0');
+          var bdData;
+          $.getJSON('/data/beijingBoundary.json',function (dt) {
+              map[0].drawBoundary(dt);
+              bdData = dt;
+              $.getJSON('/data/sample.json',function (dt1) {
+                  map[0].drawDistrict(dt1,dt);
+                  var lines = process2(dt1);
+                  var lines1 = process1(dt1);
+                  map[0].drawDisDis(dt1,lines,lines1);
+                  })
+          });
+
+          console.log(bdData)
+         /* var districtData = getdistrictData();
+          map[0].drawBoundary(bdData) map[0].drawBoundary(bdData);
+          map[0].drawDistrict(districtData, bdData);*/
+          /*console.log(districtData);
+          $.getJSON('/data/beijingBoundary.json',function (data) {
+              console.log(data);
+              bdData = data;
+              map[0].drawBoundary(data);
+              $.getJSON('/data/sample.json',function (districtData) {
+                  map[0].drawDistrict(districtData, bdData);
+              })
+          })*/
+
+          console.log(starttime);
+          console.log(end_time);
+          var start_month = months[starttime.split('-')[1]];
+          var begintime = starttime.split('-')[0]+"-"+start_month+"-"+starttime.split('-')[2]+"+"+start_hour;
+          var end_month = months[end_time.split('-')[1]];
+          var endtime = end_time.split('-')[0]+"-"+end_month+"-"+end_time.split('-')[2]+"+"+end_hour;
+          var get_url = "http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime="+begintime+"&endTime="+endtime;
+          console.log(get_url);
+           getdata(get_url).then(function(dt){
+               var lines = process(dt);
+               var lines1 = process1(dt);
+               //lines = [];
+               console.log(lines);
+               console.log(lines1);
+               map[0].drawMigration(dt,lines,lines1);
+           });
+
+
+      });
+    },
+    updated(){
+
+        let self = this;
+        console.log(maps.mapObj.length)
+        console.log("update!")
+        let mapobjs = maps.mapObj;
+        let len = mapobjs.length;
+
+        if(len>=2){
+            map[0].invalidateSize();
+        }
+        $.getJSON('/data/beijingBoundary.json',function (data) {
+            for(var i = 1;i<len;i++){
+                map[i] = new mapview('map'+i.toString());
+                map[i].drawBoundary(data);
+                $.ajax({
+                    url:'http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime=2016-07-10+07%3A00%3A00&endTime=2016-07-10+10%3A00%3A00',
+                    type:'GET',
+                    contentType:"application/json",
+                    dataType:'jsonp',
+                    success:function (dt) {
+                        console.log(dt);
+                        var lines = process(dt);
+                        var lines1 = process1(dt);
+                        //lines = [];
+                        console.log(lines);
+                        console.log(lines1);
+                        map[1].drawMigration(dt,lines,lines1);
+                    } });
+            }
+        });
+    }
+
 })
+
+
+
 
