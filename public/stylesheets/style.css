@@ -22,8 +22,34 @@ p{
   width:100%;
 }
 #userpanel{
-  width:20%;
-  float:left;
+  width:0%;
+}
+.time-link{
+    height: 10%;
+    width:15%;
+    background-color: lightgrey;
+    position: absolute;
+    bottom: 25%;
+    left:10px;
+    z-index: 2;
+}
+.time-selector{
+  height: 20%;
+  width: 15%;
+  background-color: lightgrey;
+    position: absolute;
+  bottom: 5%;
+  left:10px;
+  z-index: 2;
+}
+.time-option{
+  height: 5%;
+  width: 15%;
+  background-color: lightgrey;
+  position: absolute;
+  bottom: 10px;
+  left:10px;
+  z-index: 2;
 }
 /*#map0{
   width:80%;
@@ -32,8 +58,8 @@ p{
 }*/
 
 .onemap {
-  height: 700px;
-  width: 80%;
+  height: 1150px;
+  width: 100%;
   float: left;
   position:relative;
 }
@@ -57,14 +83,30 @@ p{
 }
 
 .flow{
-  width: 10%;
+  width: 15%;
   height: 20%;
   position: absolute;
-  background-color: rgb(254.254,254);
-  opacity: 0.3;
+  background-color: rgb(250,250,250);
+  opacity: 1;
   top:10px;
   left:10px;
   z-index:2;
+}
+.slider-label{
+  width:10%;
+  height: 10%;
+  position: absolute;
+  top:65px;
+  z-index:2;
+}
+.slider{
+  position: absolute;
+  width: 7%;
+  height: 10%;
+  left:120px;
+}
+.ivu-slider{
+  margin-top: 22px;
 }
 /*#graphSVG{
   height: 800px;

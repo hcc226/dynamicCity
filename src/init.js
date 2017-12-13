@@ -39,7 +39,11 @@ var maps = {
             'map': 'map0',
             'tab': 'tab0'
         },
-        'visualRadius':60
+        'visualRadius':100,
+        'nodeStayFilter':0,
+        'nodeInFilter':0,
+        'nodeOutFilter':0,
+        'edgefilter':0
     }
     ],
 'stay_type':[ {
@@ -79,15 +83,62 @@ var maps = {
             value: 'Grid-Grid',
             label: 'GG'
         }],
-    'travel_default':'District-District'
+    'travel_default':'District-District',
+    'years':[{
+        value:2016,
+        label:2016
+    }],
+    'year_default':2016,
+    'months':[{
+        value:'JULY',
+        label:'JULY'
+    },
+        {
+            value:'AUGUST',
+            label:'AUGUST'
+        },{
+        value:'SEP',
+            label:'SEPTEMBER'
+        }],
+    'month_default':'JULY',
+    'weekdays':[{
+        value:'ALL',
+        label:'ALL'
+    },
+        {
+            value:'WORKDAY',
+            label:'WORKDAY'
+        },{
+        value:'WEEKEND',
+            label:'WEEKEND'
+        }],
+    'weekday_default':'ALL'
 }
 
+function getNodes(data) {
+    var resdata = data;
+    var res = [];
+    $.each(data.nodes,function (i,node) {
+        var edges = data.edges;
+        var new_node = node;
+        new_node.in = 0;
+        new_node.out = 0;
+        for(var j = 0; j < edges.length; j++){
+            if(edges[j].from_nid == new_node.id){
+                new_node.out = new_node.out+1;
+            }
+            if(edges[j].to_nid == new_node.id){
+                new_node.in = new_node.in+1;
+            }
+        }
+        res.push(new_node);
+    });
+    resdata.nodes = res;
+    return resdata;
+}
 function process(data) {
     var res = [];
     $.each(data.edges,function (j , edge) {
-        /*if(j >500){
-            return res;
-        }*/
         var nodes = data.nodes;
         var link =  edge;
         //console.log(link.from_nid)
@@ -242,8 +293,9 @@ const userpannel = new Vue({
                     console.log(dt);
                     var lines = process(dt);
                     //lines = [];
+                    var data  = getNodes(dt)
                     console.log(lines);
-                    map[0].drawMigration(dt,lines);
+                    map[0].drawMigration(data,lines);
                 } });
 
         },
@@ -252,10 +304,31 @@ const userpannel = new Vue({
             console.log(index)
           map[index].changeFlow(flag);
         },
-        'radiusUpdate':function (index) {
-            console.log(maps.mapObj[index].visulRadius)
-            let radius = maps.mapObj[index].visulRadius;
+        'changeFilter':function(index,filter){
+            var radius = maps.mapObj[index].visualRadius;
+            var stayfilter = maps.mapObj[index].nodeStayFilter;
+            var stayinfilter = maps.mapObj[index].nodeInFilter;
+            var stayoutfilter = maps.mapObj[index].nodeOutFilter;
+            var edgefilter = maps.mapObj[index].edgefilter;
+            map[index].changeFilter(radius, stayfilter,stayinfilter,stayoutfilter,edgefilter);
+        },
+        'radiusUpdate':function (index,radius) {
+            console.log(radius)
+            //et radius = maps.mapObj[index].visulRadius;
             map[index].changeVisualRadius(radius);
+        },
+        'nodeSFU':function (index,stayfilter) {
+            console.log(maps.mapObj[index].nodeStayFilter)
+            map[index].changeSFU(stayfilter);
+        },
+        'nodeIFU':function (index,stayinfilter) {
+            map[index].changeIFU(stayinfilter);
+        },
+        'nodeOFU':function (index,stayoutfilter) {
+            map[index].changeOFU(stayoutfilter)
+        },
+        'edgeFU':function (index,edgefilter) {
+            map[index].changeEFU(edgefilter)
         },
         'changeTravelType':function (travel_type) {
             if(travel_type == "Grid-Grid"){
@@ -275,10 +348,11 @@ const userpannel = new Vue({
                         console.log(dt);
                         var lines = process(dt);
                         var lines1 = process1(dt);
+                        var data = getNodes(dt)
                         //lines = [];
                         console.log(lines);
                         console.log(lines1);
-                        map[0].drawMigration(dt,lines,lines1);
+                        map[0].drawMigration(data,lines,lines1);
                     } });
             }
             else if(travel_type == "District-District"){
@@ -293,6 +367,263 @@ const userpannel = new Vue({
                 });
             }
 
+        },
+        'getView':function (get_url) {
+            this.dt = getdata(get_url);
+            console.log(this.dt);
+                var lines = process(this.dt);
+                var lines1 = process1(this.dt);
+                //lines = [];
+                console.log(lines);
+                console.log(lines1);
+                map[0].drawMigration(this.dt,lines,lines1);
+        },
+        //draw the clock in the time filter
+        'drawClock':function () {
+
+            var arc = d3.arc()
+                .outerRadius(40)
+                .innerRadius(25)
+                .padAngle(0.05);
+            var big_arc =  d3.arc()
+                .outerRadius(43)
+                .innerRadius(22);
+            var arcData = [];
+            for(var i=0;i<24;i++){
+                var t = {};
+                t.id = i;
+                t.hour = (i+12)%24;
+                t.value = 1;
+                arcData.push(t);
+            };
+            var pie = d3.pie()
+                .sort(null)
+                .value(function (d1) {
+                    return d1.value;
+                })
+            var svg = d3.select(".time-selector").append("svg")
+                .attr("width",300)
+                .attr("height",200)
+                .append("g")
+                .attr("class","time-clock");
+
+            var g=svg.selectAll(".arc")
+                .data(pie(arcData))
+                .enter().append("g")
+                .attr("class","arc")
+                .attr("transform",'translate(150,100)');
+            var timelabel=[{
+                'text':12,
+                'position':[143,55]
+            },{
+                'text':15,
+                'position':[180,70]
+            },
+                {
+                    'text':18,
+                    'position':[193,105]
+                },
+                {
+                    'text':21,
+                    'position':[180,140]
+                },
+                {
+                    'text':0,
+                    'position':[147,152]
+                },
+                {
+                    'text':3,
+                    'position':[110,140]
+                },
+                {
+                    'text':6,
+                    'position':[100,105]
+                },
+                {
+                    'text':9,
+                    'position':[110,70]
+                }
+            ];
+
+            var text = svg.selectAll("text")
+                .data(timelabel)
+                .enter()
+                .append("text")
+                .attr("fill","black")
+                .attr("x",function (d) {
+                    return d.position[0];
+                })
+                .attr("y",function (d) {
+                    return d.position[1];
+                })
+                .html(function (d) {
+                    return d.text;
+                });
+
+
+
+
+            var big_svg = d3.select(".time-selector").select("svg").select("g");
+            var big_g = big_svg.selectAll(".arc1")
+                .data(pie(arcData))
+                .enter().append("g")
+                .attr("class","arc1")
+                .attr("transform",'translate(150,100)');
+
+            big_g.append("path")
+                .attr("d",big_arc)
+                .attr("id",function (d,i) {
+                    return "big-path"+i.toString();
+                })
+                .attr("class","big_arc")
+                .each(function (d,i) {
+                    d.clicked = false;
+                })
+                .style("opacity","0")
+                .style("cursor",'hand')
+                .style("fill","grey")
+                .on("mouseover",function (d,i) {
+                    d3.select(this).style("fill","#eee");
+                    g.select("#path"+i.toString()).style("fill","#eee");
+                })
+                .on("mouseout",function (d,i) {
+                    d3.select(this).style("fill","grey");
+                    g.select("#path"+i.toString()).style("fill","black");
+                })
+                .on("click",function (d) {
+                    d.clicked = !d.clicked;
+                    if(d.clicked){
+                        d3.select(this).style("opacity","1");
+                    }
+                    else{
+                        d3.select(this).style("opacity","0");
+                    }
+                });
+
+            g.append("path")
+                .attr("d",arc)
+                .attr("id",function (d,i) {
+                    return "path"+i.toString();
+                })
+                .style('cursor','hand')
+                .style("fill","black")
+                .each(function (d,i) {
+                    d.clicked = false;
+                })
+                .style("stroke","grey")
+                .style("stroke-width",'0px')
+                .on('mouseover',function (d) {
+                    d3.select(this).style("fill","#eee");
+                })
+                .on("mouseout",function () {
+                    d3.select(this).style("fill","black");
+                });
+                this.clock = big_g;
+        },
+        'changeTI':function (index) {
+            var g = this.clock;
+            var start_hour = "07:00:00",end_hour = "09:05:00";
+            function showClock(interval_set) {
+                for(var i = 0; i < 24; i++){
+                    var flag = false;
+                    interval_set.forEach(function (d) {
+                        if( d == i){
+                            flag = true;
+                            g.select('#big-path'+d.toString()).style("opacity",'1');
+                        }
+                    });
+                    if(!flag){
+                        g.select('#big-path'+i.toString()).style("opacity",'0');
+                    }
+                }
+            }
+            if(index == 0){
+                console.log(this.clock);
+                this.clock.selectAll(".big_arc").style("opacity",'0');
+                start_hour = "00:00:00";
+                end_hour ="23:59:59";
+            }
+            if(index == 1){
+                this.clock.selectAll(".big_arc").style("opacity",'1');
+                start_hour = "00:00:00";
+                end_hour = "00:00:00";
+            }
+            if(index == 2){
+                var interval_set = [0,1,2,3,4,5,6,7,23,22,21,20,19];
+                showClock(interval_set);
+                start_hour = "07:00:00";
+                end_hour = "20:00:00";
+            }
+            if(index == 3){
+                var interval_set = [8,9,10,11,12,13,14,15,16,17,18];
+                showClock(interval_set);
+                // to be added not full!
+                start_hour = "20:00:00";
+                end_hour = "23:59:59";
+            }
+            if(index == 4){
+                var interval_set = [19,20,21];
+                showClock(interval_set);
+                start_hour = "07:00:00";
+                end_hour = "09:59:59";
+            }
+            if(index == 5){
+                var interval_set = [5,6,7];
+                showClock(interval_set);
+                start_hour = "17:00:00";
+                end_hour = "19:59:59";
+            }
+            if(index == 6){
+                var interval_set = [6,7,8,9,10,11,12,13,14,15];
+                showClock(interval_set);
+                // not full 0-3 not included
+                start_hour = "18:00:00";
+                end_hour = "23:59:59";
+            }
+            if(index == 7){
+                var interval_set = [0,1,2,3,23,22,21,20];
+                showClock(interval_set);
+                start_hour = "08:00:00";
+                end_hour = "15:59:59";
+            }
+            if(index == 8){
+                var interval_set = [4,5,6,7,8,9,10,11];
+                showClock(interval_set);
+                start_hour = "16:00:00";
+                end_hour = "23:59:59";
+            }
+            if(index == 9){
+                var interval_set = [12,13,14,15,16,17,18,19];
+                showClock(interval_set);
+                start_hour = "00:00:00";
+                end_hour = "07:59:59";
+            }
+            var start_month = months[starttime.split('-')[1]];
+            var begintime = starttime.split('-')[0]+"-"+start_month+"-"+starttime.split('-')[2]+"+"+start_hour;
+            //var end_month = months[end_time.split('-')[1]];
+            var endtime = starttime.split('-')[0]+"-"+start_month+"-"+starttime.split('-')[2]+"+"+end_hour;
+            var get_url = "http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime="+begintime+"&endTime="+endtime;
+            console.log(get_url);
+           /* var dt = getdata(get_url);
+            var lines = process(dt);
+            var lines1 = process1(dt);
+            map[0].drawMigration(dt,lines,lines1);*/
+            $.ajax({
+                /* url:'http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime=2016-07-05+03%3A30%3A00&endTime=2016-07-05+06%3A05%3A00',*/
+                url:get_url,
+                type:'GET',
+                contentType:"application/json",
+                dataType:'jsonp',
+                success:function (dt) {
+                    console.log(dt);
+                    var lines = process(dt);
+                    var lines1 = process1(dt);
+                    //lines = [];
+                    var data = getNodes(dt);
+                    console.log(lines);
+                    console.log(lines1);
+                    map[0].drawMigration(data,lines,lines1);
+                } });
         }
 
     
@@ -310,7 +641,9 @@ const userpannel = new Vue({
         }
     },
     mounted() {
+        let self =this;
         console.log("mounted")
+        this.drawClock();
         var margin = {top: 20, right: 10, bottom: 20, left: 4},
             width = 330- margin.left - margin.right,
             height = 60 - margin.top - margin.bottom;
@@ -353,7 +686,7 @@ const userpannel = new Vue({
                 .on("end",draw))
             .call(d3.brushX().move,[18,35])
         var d0,d1;
-        var start_hour = "07:00:00",end_hour = "08:05:00";
+        var start_hour = "07:00:00",end_hour = "09:05:00";
         var count = 0;
         function brushed() {
             if (d3.event.sourceEvent.type === "brush") return;
@@ -399,15 +732,18 @@ const userpannel = new Vue({
                     console.log(dt);
                     var lines = process(dt);
                     var lines1 = process1(dt);
+                    var data = getNodes(dt)
                     //lines = [];
                     console.log(lines);
                     console.log(lines1);
-                    map[0].drawMigration(dt,lines,lines1);
+                    map[0].drawMigration(data,lines,lines1);
+
                 } });
         }
 
-      let self = this;
+
       this.$nextTick(function () {
+          let self = this;
           map[0] = new mapview('map0');
           var bdData;
           $.getJSON('/data/beijingBoundary.json',function (dt) {
@@ -417,23 +753,30 @@ const userpannel = new Vue({
                   map[0].drawDistrict(dt1,dt);
                   var lines = process2(dt1);
                   var lines1 = process1(dt1);
-                  map[0].drawDisDis(dt1,lines,lines1);
+                  var start_month = months[starttime.split('-')[1]];
+                  var begintime = starttime.split('-')[0]+"-"+start_month+"-"+starttime.split('-')[2]+"+"+start_hour;
+                  //var end_month = months[end_time.split('-')[1]];
+                  var endtime = starttime.split('-')[0]+"-"+start_month+"-"+starttime.split('-')[2]+"+"+end_hour;
+                  var get_url = "http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime="+begintime+"&endTime="+endtime;
+                  console.log(get_url);
+                  $.ajax({
+                      /* url:'http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime=2016-07-05+03%3A30%3A00&endTime=2016-07-05+06%3A05%3A00',*/
+                      url:get_url,
+                      type:'GET',
+                      contentType:"application/json",
+                      dataType:'jsonp',
+                      success:function (dt) {
+                          console.log(dt);
+                          var data = getNodes(dt)
+                          //lines = [];
+                          console.log(lines);
+                          console.log(lines1);
+                          map[0].drawDisDis(data,lines,lines1);
+                      } });
                   })
           });
 
-          console.log(bdData)
-         /* var districtData = getdistrictData();
-          map[0].drawBoundary(bdData) map[0].drawBoundary(bdData);
-          map[0].drawDistrict(districtData, bdData);*/
-          /*console.log(districtData);
-          $.getJSON('/data/beijingBoundary.json',function (data) {
-              console.log(data);
-              bdData = data;
-              map[0].drawBoundary(data);
-              $.getJSON('/data/sample.json',function (districtData) {
-                  map[0].drawDistrict(districtData, bdData);
-              })
-          })*/
+   /*       console.log(bdData)
 
           console.log(starttime);
           console.log(end_time);
@@ -443,15 +786,7 @@ const userpannel = new Vue({
           var endtime = end_time.split('-')[0]+"-"+end_month+"-"+end_time.split('-')[2]+"+"+end_hour;
           var get_url = "http://192.168.1.42:3000/api/basicGraph?spaceType=grid&timeType=duration&netType=basic&other=none&beginTime="+begintime+"&endTime="+endtime;
           console.log(get_url);
-           getdata(get_url).then(function(dt){
-               var lines = process(dt);
-               var lines1 = process1(dt);
-               //lines = [];
-               console.log(lines);
-               console.log(lines1);
-               map[0].drawMigration(dt,lines,lines1);
-           });
-
+          self.getView(get_url);*/
 
       });
     },
@@ -479,10 +814,11 @@ const userpannel = new Vue({
                         console.log(dt);
                         var lines = process(dt);
                         var lines1 = process1(dt);
+                        var data = getNodes(dt);
                         //lines = [];
                         console.log(lines);
                         console.log(lines1);
-                        map[1].drawMigration(dt,lines,lines1);
+                        map[1].drawMigration(data,lines,lines1);
                     } });
             }
         });

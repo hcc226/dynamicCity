@@ -1,89 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/public/stylesheets/style.css" line="29" />
+    <bookmark url="file://$PROJECT_DIR$/public/stylesheets/style.css" line="55" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0641d03a-0bb9-4b47-991b-6125d3c4dece" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/BMapLib_CityList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/bootstrap-datetimepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/bootstrap-datetimepicker.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery.jsonp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/leaflet-echarts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.az.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.bg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.bn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ca.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.da.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ee.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.el.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.he.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.hr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.hy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.id.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.is.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ka.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ko.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.lt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.lv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ms.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.nb.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.no.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.pt-BR.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.pt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.rs-latin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.rs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.sk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.sl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.sv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.sw.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.th.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.ua.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.uk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.zh-CN.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/locales/bootstrap-datetimepicker.zh-TW.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/bootstrap-datetimepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/bootstrap-datetimepicker.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/drawMap/mapLayout.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/processData/getData.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/processData/processData.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/prop.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/timeSelector.jade" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/test.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/data/sample.json" afterPath="$PROJECT_DIR$/public/data/sample.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/data/test.json" afterPath="$PROJECT_DIR$/public/data/test.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/data/test1.json" afterPath="$PROJECT_DIR$/public/data/test1.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/data/tsconfig.json" afterPath="$PROJECT_DIR$/public/data/tsconfig.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drawMap/mapLayout.js" afterPath="$PROJECT_DIR$/src/drawMap/mapLayout.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/init.js" afterPath="$PROJECT_DIR$/src/init.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/processData/getData.js" afterPath="$PROJECT_DIR$/src/processData/getData.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -96,75 +26,36 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7806574">
+    <splitter split-orientation="horizontal" split-proportion="0.6117647">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="layout.jade" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/layout.jade">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="576">
-                  <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+                <state relative-caret-position="900">
+                  <caret line="25" column="21" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="sample.json" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/data/sample.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2700">
-                  <caret line="188" column="29" lean-forward="false" selection-start-line="188" selection-start-column="29" selection-end-line="188" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#13#2229#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/index.jade">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1332">
-                  <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2016">
-                  <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="bjDistrict.json" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/data/bjDistrict.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="612">
-                  <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="init.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="init.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/init.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="389">
-                  <caret line="448" column="28" lean-forward="true" selection-start-line="448" selection-start-column="28" selection-end-line="448" selection-end-column="28" />
+                <state relative-caret-position="9864">
+                  <caret line="442" column="18" lean-forward="false" selection-start-line="442" selection-start-column="18" selection-end-line="442" selection-end-column="18" />
                   <folding>
                     <element signature="e#30#73#0" expanded="true" />
                     <element signature="e#462#909#0" expanded="false" />
-                    <element signature="n#!!block;n#process#0" expanded="false" />
+                    <element signature="e#1903#1970#0" expanded="false" />
                     <element signature="n#!!block;n#process1#0" expanded="false" />
-                    <element signature="e#5716#6094#0" expanded="false" />
-                    <element signature="e#6258#7094#0" expanded="false" />
-                    <element signature="e#11384#12309#0" expanded="false" />
-                    <element signature="e#12334#13609#0" expanded="false" />
+                    <element signature="n#!!block;n#process2#0" expanded="false" />
+                    <element signature="e#6904#7282#0" expanded="false" />
+                    <element signature="e#7446#8329#0" expanded="false" />
+                    <element signature="e#9697#11554#0" expanded="false" />
+                    <element signature="e#11593#11935#0" expanded="false" />
+                    <element signature="e#21075#21373#0" expanded="false" />
+                    <element signature="e#23148#24073#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -180,15 +71,57 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="getData.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/processData/getData.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="396">
+                  <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="312">
+                  <caret line="98" column="11" lean-forward="true" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/index.jade">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2160">
+                  <caret line="60" column="19" lean-forward="false" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="sample.json" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public/data/sample.json">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="6264">
+                  <caret line="287" column="14" lean-forward="false" selection-start-line="287" selection-start-column="14" selection-end-line="287" selection-end-column="14" />
+                  <folding>
+                    <element signature="e#13#2229#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="mapLayout.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="mapLayout.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/drawMap/mapLayout.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="36">
-                  <caret line="893" column="24" lean-forward="false" selection-start-line="893" selection-start-column="24" selection-end-line="893" selection-end-column="24" />
+                  <caret line="890" column="24" lean-forward="false" selection-start-line="890" selection-start-column="24" selection-end-line="890" selection-end-column="24" />
                   <folding>
                     <element signature="n#!!block;n#constructor#0;n#mapview#0" expanded="false" />
                     <element signature="e#497#2254#0" expanded="false" />
@@ -198,15 +131,14 @@
                     <element signature="e#17202#22461#0" expanded="false" />
                     <element signature="n#!!block;n#pathData#0;n#!!block;n#drawMigration#0;n#mapview#0" expanded="false" />
                     <element signature="n#!!block;n#qBerzier#0;n#!!block;n#drawMigration#0;n#mapview#0" expanded="false" />
-                    <element signature="n#!!block;n#arrowData#0;n#!!block;n#drawMigration#0;n#mapview#0" expanded="false" />
                     <element signature="n#!!block;n#changeFlow#0;n#mapview#0" expanded="false" />
                     <element signature="n#!!block;n#drawDistrict#0;n#mapview#0" expanded="false" />
                     <element signature="n#!!block;n#pathData#0;n#!!block;n#drawDisDis#0;n#mapview#0" expanded="false" />
                     <element signature="n#!!block;n#qBerzier#0;n#!!block;n#drawDisDis#0;n#mapview#0" expanded="false" />
-                    <marker date="1512453932679" expanded="true" signature="657:663" ph="©" />
-                    <marker date="1512453932679" expanded="true" signature="1226:1232" ph="©" />
-                    <marker date="1512453932679" expanded="true" signature="2411:2417" ph="©" />
-                    <marker date="1512453932679" expanded="false" signature="5540:7265" ph="{&quot;name&quot;: &quot;in&quot;...}" />
+                    <marker date="1513058870783" expanded="true" signature="657:663" ph="©" />
+                    <marker date="1513058870783" expanded="true" signature="1226:1232" ph="©" />
+                    <marker date="1513058870783" expanded="true" signature="2411:2417" ph="©" />
+                    <marker date="1513058870783" expanded="false" signature="5540:7265" ph="{&quot;name&quot;: &quot;in&quot;...}" />
                   </folding>
                 </state>
               </provider>
@@ -216,17 +148,17 @@
             <entry file="file://$PROJECT_DIR$/package.json">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="540">
-                  <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+                  <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/webpack.config.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="37" column="14" lean-forward="true" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+                <state relative-caret-position="1332">
+                  <caret line="37" column="14" lean-forward="false" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
@@ -247,36 +179,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>maps</find>
-      <find>getOverview</find>
-      <find>data</find>
-      <find>addcontrol</find>
-      <find>18</find>
-      <find>addmap</find>
-      <find>graph</find>
-      <find>nid</find>
-      <find>mapview</find>
-      <find>class</find>
-      <find>0.3</find>
-      <find>pathdata</find>
-      <find>drawmigration</find>
-      <find>conso</find>
-      <find>mapobj</find>
-      <find>this.map</find>
-      <find>reset!</find>
-      <find>map</find>
-      <find>math</find>
-      <find>603</find>
-      <find>update</find>
-      <find>name</find>
-      <find>invi</find>
-      <find>then</find>
-      <find>overlaypane</find>
-      <find>getPane</find>
-      <find>addto</find>
-      <find>remove</find>
       <find>getdi</find>
+      <find>getview</find>
+      <find>getvi</find>
+      <find>end_hour</find>
+      <find>08</find>
+      <find>15</find>
+      <find>150</find>
+      <find>start_hour</find>
+      <find>trans</find>
+      <find>50</find>
+      <find>change</find>
+      <find>radius</find>
+      <find>stay</find>
+      <find>drawmi</find>
+      <find>dra</find>
+      <find>drawm</find>
+      <find>click</find>
+      <find>changet</find>
+      <find>each</find>
+      <find>this.node</find>
+      <find>fu</find>
+      <find>nodeStayFilter</find>
+      <find>distance</find>
+      <find>node</find>
+      <find>radiusup</find>
+      <find>arrow</find>
+      <find>arrowdata</find>
+      <find>clock</find>
       <find>opacity</find>
+      <find>getdistance</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\lenovo\WebstormProjects\dynamicCity</dir>
@@ -303,13 +235,14 @@
         <option value="$PROJECT_DIR$/src/drawMap/tempreral.html" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/views/timeSelector.jade" />
         <option value="$PROJECT_DIR$/src/processData/getData.js" />
         <option value="$PROJECT_DIR$/public/data/sample.json" />
+        <option value="$PROJECT_DIR$/src/init.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/src/drawMap/mapLayout.js" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/init.js" />
       </list>
     </option>
   </component>
@@ -332,8 +265,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="301" />
-    <option name="y" value="62" />
+    <option name="x" value="356" />
+    <option name="y" value="118" />
     <option name="width" value="1060" />
     <option name="height" value="848" />
   </component>
@@ -363,27 +296,47 @@
             <path>
               <item name="dynamicCity" type="b2602c69:ProjectViewProjectNode" />
               <item name="dynamicCity" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dynamicCity" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamicCity" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="vue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dynamicCity" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamicCity" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="vue" type="462c0819:PsiDirectoryNode" />
               <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dynamicCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dynamicCity" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dynamicCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dynamicCity" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dynamicCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dynamicCity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dynamicCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dynamicCity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="drawMap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dynamicCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dynamicCity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="processData" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dynamicCity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dynamicCity" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -395,16 +348,16 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/lenovo/WebstormProjects/dynamicCity/public/javascripts/bootstrap-datetimepicker.js" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\public" />
-      <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\views" />
       <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\public\stylesheets" />
       <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\public\javascripts" />
       <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\public" />
       <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\public\data" />
-      <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\public" />
+      <recent name="C:\Users\lenovo\WebstormProjects\dynamicCity\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -476,24 +429,29 @@
       <workItem from="1512286881777" duration="16452000" />
       <workItem from="1512348242398" duration="34784000" />
       <workItem from="1512438200882" duration="7437000" />
-      <workItem from="1512524249818" duration="2416000" />
+      <workItem from="1512524249818" duration="7958000" />
+      <workItem from="1512611278927" duration="29518000" />
+      <workItem from="1512695577278" duration="13781000" />
+      <workItem from="1512808472207" duration="40668000" />
+      <workItem from="1513146858224" duration="592000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="438901000" />
+    <option name="totallyTimeSpent" value="529002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.04583836" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12846804" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19910179" sideWeight="0.5188679" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2421959" sideWeight="0.49758744" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969843" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06781486" sideWeight="0.4811321" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0613563" sideWeight="0.4811321" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -533,18 +491,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/javascripts/leaflet.curve.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/data.json" />
     <entry file="file://$USER_HOME$/Desktop/district.json" />
     <entry file="file://$PROJECT_DIR$/app.js">
@@ -664,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -695,7 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="212" column="0" lean-forward="true" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -727,33 +676,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/data/beijingBoundary.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5796">
+          <caret line="0" column="574" lean-forward="false" selection-start-line="0" selection-start-column="574" selection-end-line="0" selection-end-column="574" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/drawMap/tempreral.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1402">
+          <caret line="600" column="0" lean-forward="false" selection-start-line="600" selection-start-column="0" selection-end-line="601" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+    <entry file="file://$PROJECT_DIR$/node_modules/vue/dist/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="-3882">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/processData/getData.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/vue/dist/vue.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="63" column="6" lean-forward="true" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/data/sample.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2700">
-          <caret line="188" column="29" lean-forward="false" selection-start-line="188" selection-start-column="29" selection-end-line="188" selection-end-column="29" />
-          <folding>
-            <element signature="e#13#2229#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -761,7 +719,47 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1332">
+          <caret line="37" column="14" lean-forward="false" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/timeSelector.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="25" column="21" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/processData/getData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/data/sample.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6264">
+          <caret line="287" column="14" lean-forward="false" selection-start-line="287" selection-start-column="14" selection-end-line="287" selection-end-column="14" />
+          <folding>
+            <element signature="e#13#2229#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -773,48 +771,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/data/beijingBoundary.json">
+    <entry file="file://$PROJECT_DIR$/src/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5796">
-          <caret line="0" column="574" lean-forward="false" selection-start-line="0" selection-start-column="574" selection-end-line="0" selection-end-column="574" />
+        <state relative-caret-position="9864">
+          <caret line="442" column="18" lean-forward="false" selection-start-line="442" selection-start-column="18" selection-end-line="442" selection-end-column="18" />
+          <folding>
+            <element signature="e#30#73#0" expanded="true" />
+            <element signature="e#462#909#0" expanded="false" />
+            <element signature="e#1903#1970#0" expanded="false" />
+            <element signature="n#!!block;n#process1#0" expanded="false" />
+            <element signature="n#!!block;n#process2#0" expanded="false" />
+            <element signature="e#6904#7282#0" expanded="false" />
+            <element signature="e#7446#8329#0" expanded="false" />
+            <element signature="e#9697#11554#0" expanded="false" />
+            <element signature="e#11593#11935#0" expanded="false" />
+            <element signature="e#21075#21373#0" expanded="false" />
+            <element signature="e#23148#24073#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1332">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="2160">
+          <caret line="60" column="19" lean-forward="false" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2016">
-          <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/drawMap/tempreral.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1402">
-          <caret line="600" column="0" lean-forward="false" selection-start-line="600" selection-start-column="0" selection-end-line="601" selection-end-column="0" />
-          <folding>
-            <marker date="1510901668713" expanded="true" signature="1278:1284" ph="©" />
-            <marker date="1510901668713" expanded="true" signature="1339:1345" ph="©" />
-            <marker date="1510901668713" expanded="true" signature="1716:1722" ph="©" />
-            <marker date="1510901668713" expanded="true" signature="1777:1783" ph="©" />
-            <marker date="1510901668713" expanded="true" signature="2282:2288" ph="©" />
-            <marker date="1510901668713" expanded="true" signature="2343:2349" ph="©" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/drawMap/mapLayout.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
-          <caret line="893" column="24" lean-forward="false" selection-start-line="893" selection-start-column="24" selection-end-line="893" selection-end-column="24" />
+          <caret line="890" column="24" lean-forward="false" selection-start-line="890" selection-start-column="24" selection-end-line="890" selection-end-column="24" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#mapview#0" expanded="false" />
             <element signature="e#497#2254#0" expanded="false" />
@@ -824,67 +812,23 @@
             <element signature="e#17202#22461#0" expanded="false" />
             <element signature="n#!!block;n#pathData#0;n#!!block;n#drawMigration#0;n#mapview#0" expanded="false" />
             <element signature="n#!!block;n#qBerzier#0;n#!!block;n#drawMigration#0;n#mapview#0" expanded="false" />
-            <element signature="n#!!block;n#arrowData#0;n#!!block;n#drawMigration#0;n#mapview#0" expanded="false" />
             <element signature="n#!!block;n#changeFlow#0;n#mapview#0" expanded="false" />
             <element signature="n#!!block;n#drawDistrict#0;n#mapview#0" expanded="false" />
             <element signature="n#!!block;n#pathData#0;n#!!block;n#drawDisDis#0;n#mapview#0" expanded="false" />
             <element signature="n#!!block;n#qBerzier#0;n#!!block;n#drawDisDis#0;n#mapview#0" expanded="false" />
-            <marker date="1512453932679" expanded="true" signature="657:663" ph="©" />
-            <marker date="1512453932679" expanded="true" signature="1226:1232" ph="©" />
-            <marker date="1512453932679" expanded="true" signature="2411:2417" ph="©" />
-            <marker date="1512453932679" expanded="false" signature="5540:7265" ph="{&quot;name&quot;: &quot;in&quot;...}" />
+            <marker date="1513058870783" expanded="true" signature="657:663" ph="©" />
+            <marker date="1513058870783" expanded="true" signature="1226:1232" ph="©" />
+            <marker date="1513058870783" expanded="true" signature="2411:2417" ph="©" />
+            <marker date="1513058870783" expanded="false" signature="5540:7265" ph="{&quot;name&quot;: &quot;in&quot;...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        <state relative-caret-position="312">
+          <caret line="98" column="11" lean-forward="true" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/dist/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3882">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/dist/vue.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="37" column="14" lean-forward="true" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="448" column="28" lean-forward="true" selection-start-line="448" selection-start-column="28" selection-end-line="448" selection-end-column="28" />
-          <folding>
-            <element signature="e#30#73#0" expanded="true" />
-            <element signature="e#462#909#0" expanded="false" />
-            <element signature="n#!!block;n#process#0" expanded="false" />
-            <element signature="n#!!block;n#process1#0" expanded="false" />
-            <element signature="e#5716#6094#0" expanded="false" />
-            <element signature="e#6258#7094#0" expanded="false" />
-            <element signature="e#11384#12309#0" expanded="false" />
-            <element signature="e#12334#13609#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

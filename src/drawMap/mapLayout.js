@@ -878,6 +878,96 @@ console.log(nodeG)
 
         }
     }
+    changeFilter(radius, stayfilter, stayinfilter,stayoutfilter,edgefilter){
+        let visual_nodes = [];
+        function deg2rad(deg) {
+            return deg * (Math.PI/180)
+        }
+        function getDistance(lon1,lat1,lon2,lat2) {
+            var R = 6371; // Radius of the earth in km
+            var dLat = deg2rad(lat2-lat1);  // deg2rad below
+            var dLon = deg2rad(lon2-lon1);
+            var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            var d = R * c; // Distance in km
+            return d;
+
+            /*var p = 0.017453292519943295;    // Math.PI / 180
+            var c = Math.cos;
+            var a = 0.5 - c((lat2 - latitude) * p)/2 +
+                c(latitude * p) * c(lat2 * p) *
+                (1 - c((long2 - longitude) * p))/2;
+            return 12742 * Math.asin(Math.sqrt(a));*/
+
+           /* let R = 6371; // 地球半径
+            latitude = latitude * Math.PI / 180.0;
+            lat2 = lat2 * Math.PI / 180.0;
+            let a = latitude - lat2;
+            let b = (longitude - long2) * Math.PI / 180.0;
+            let  d;
+            let sa2, sb2;
+            sa2 = Math.sin(a / 2.0);
+            sb2 = Math.sin(b / 2.0);
+            d = 2 * R * Math.asin(
+                Math.sqrt(sa2 * sa2 + Math.cos(latitude)
+                    * Math.cos(lat2) * sb2 * sb2));
+            return d;*/
+        }
+        this.node.attr("display",function (d) {
+            let distance = getDistance(d.y,d.x,39.975,116.345)
+            console.log(distance)
+            if(d.id==438){
+                return "block";
+            }
+            else if(distance > radius || d.stay_device_num < stayfilter ||
+            d.in < stayinfilter || d.out < stayoutfilter){
+                visual_nodes.push(d.id);
+                return "none"
+            }
+            else {
+                return "block"
+            }
+        });
+        console.log(visual_nodes)
+        this.link.attr("display",function (d) {
+            let distance = getDistance(d.from_y,d.from_x,39.975,116.345);
+            if(distance>radius || d.travel_record_num < edgefilter){
+                return "none"
+            }
+            else {
+                return "block"
+            }
+        });
+        this.arrow.attr("display",function (d) {
+            let distance = getDistance(d.from_y,d.from_x,39.975,116.345);
+            if(distance>radius || d.travel_record_num < edgefilter){
+                return "none"
+            }
+            else {
+                return "block"
+            }
+        });
+
+        this.link1.attr("display",function (d) {
+            let distance = getDistance(d.to_y,d.to_x,39.975,116.345);
+            if(distance>radius || d.travel_record_num < edgefilter){
+                return "none"
+            }
+            else {
+                return "block"
+            }
+        });
+        this.arrow1.attr("display",function (d) {
+            let distance = getDistance(d.to_y,d.to_x,39.975,116.345);
+            if(distance>radius || d.travel_record_num < edgefilter ){
+                return "none"
+            }
+            else {
+                return "block"
+            }
+        });
+
+    }
     changeVisualRadius(radius){
         let visual_nodes = [];
         function getDistance(longitude,latitude,long2,lat2) {
@@ -895,11 +985,6 @@ console.log(nodeG)
                     * Math.cos(lat2) * sb2 * sb2));
             return d;
         }
-        console.log(this.nodeLayer);
-        console.log(this.node);
-        this.node.each(function (d) {
-            console.log(d)
-        })
         this.node.attr("display",function (d) {
             let distance = getDistance(d.y,d.x,39.975,116.345)
             console.log(distance)
@@ -955,6 +1040,44 @@ console.log(nodeG)
         });
 
     }
+    changeSFU(stayfilter){
+        this.node.attr('display',function (d) {
+            if(d.stay_record_num>=stayfilter){
+                return 'block'
+            }
+            else return 'none'
+        })
+            }
+    changeIFU(stayinfilter){
+        this.node.attr('display',function (d) {
+            if(d.in >= stayinfilter){
+                return 'block'
+            }
+            else return 'none'
+        })
+    }
+    changeOFU(stayoutfilter){
+        this.node.attr('display',function (d) {
+            if(d.out >= stayoutfilter){
+                return 'block'
+            }
+            else return 'none'
+        })
+    }
+    changeEFU(edgefilter){
+        this.link.attr('display',function (d) {
+            if(d.travel_record_num>=edgefilter){
+                return 'block'
+            }
+            else return 'none'
+        })
+        this.arrow.attr('display',function (d) {
+             if(d.travel_record_num>=edgefilter){
+                    return 'block'
+                }
+                else return 'none'
+        })
+    }
     drawDistrict(data,bdData){
         let self = this;
         var num=[];
@@ -996,9 +1119,29 @@ console.log(nodeG)
         let self = this;
         var initZoom = self.map.getZoom();
         let g = d3.select(self.map.getPanes().overlayPane).select("svg").select("g");
+        let ddnodeG =  g.append("g").attr("class","node-dd-layer");
         let ddEdgeG = g.append("g").attr("class","edge-dd-layer");
         let ddArrowG = g.append("g").attr("class","arrow-dd-layer");
-
+        var num = [];
+        graph.nodes.forEach(function (t) {
+            num.push(t.stay_device_num);
+        })
+        var min = d3.min(num);
+        var max = d3.max(num);
+        function getColor(h,s,l) {
+            var colors=[204,204];
+            //var colors=204;
+            var sRange=[1,0];
+            var lRange=[0.8,0.3];
+            var sScale=d3.scaleLinear()
+                .domain([0,1])
+                .range(sRange);
+            var lScale=d3.scaleLinear()
+                .domain([0,1])
+                .range(lRange);
+            var value='hsl('+colors[h]+','+(sScale(s)*100)+'%,'+(lScale(l)*100)+'%)';
+            return value
+        }
         g.selectAll(".node").remove();
         g.selectAll(".edge").remove();
         g.selectAll(".arrow").remove();
@@ -1041,8 +1184,8 @@ console.log(nodeG)
             siny=Math.sin(slopy);
             return [
                 'M', midPoint.x, ' ', midPoint.y,
-                'L', (Number(midPoint.x)+Number(Par*cosy-(Par/2.0*siny))*initZoom/5), ' ', Number(midPoint.y)+Number(Par*siny+(Par/2.0*cosy))*initZoom/5,
-                'M', Number(midPoint.x)+Number(Par*cosy+Par/2.0*siny)*initZoom/5, ' ', Number(midPoint.y)-Number(Par/2.0*cosy-Par*siny)*initZoom/5,
+                'L', (Number(midPoint.x)+Number(Par*cosy-(Par/2.0*siny))*initZoom/10), ' ', Number(midPoint.y)+Number(Par*siny+(Par/2.0*cosy))*initZoom/10,
+                'M', Number(midPoint.x)+Number(Par*cosy+Par/2.0*siny)*initZoom/10, ' ', Number(midPoint.y)-Number(Par/2.0*cosy-Par*siny)*initZoom/10,
                 'L', midPoint.x, ' ', midPoint.y,
             ].join('');
         }
@@ -1054,6 +1197,16 @@ console.log(nodeG)
         let transform = d3.geoTransform({point: self.projectPoint}),
             path = d3.geoPath().projection(transform);
 
+        let node = ddnodeG.selectAll("circle")
+            .data(graph.nodes)
+            .enter().append("circle")
+            .attr("fill",function (d) {
+                return getColor(1,0.5,(d.stay_device_num-min)/(max-min));
+            })
+            .attr("class","node")
+            .attr("id",function (d) {
+                return "node_"+d.id
+            });
 
         let ddlink = ddEdgeG.selectAll("path")
             .data(lines)
@@ -1092,6 +1245,19 @@ console.log(nodeG)
             var curZoom = self.map.getZoom();
             g.style('display', 'block');
 
+            node.attr("transform",function (d) {
+
+                var pos = self.map.latLngToLayerPoint(new L.LatLng(d.y,d.x));
+
+                return "translate("+pos.x+","+pos.y+")";
+            })
+                .attr("r",function (d) {
+                    /*return curZoom*d.stay_record_num/800/initZoom;*/
+                    return 5*curZoom/initZoom;
+                })
+                .style("opacity","0.8");
+
+
             ddlink.attr("d",function (d) {
                 var point1 =  self.map.latLngToLayerPoint(new L.LatLng(d.from_y, d.from_x));
                 var point2 =  self.map.latLngToLayerPoint(new L.LatLng(d.to_y, d.to_x))
@@ -1116,6 +1282,9 @@ console.log(nodeG)
                     return curZoom*d.travel_device_num/initZoom/2;
                 });
         }
+        this.node = node;
+        this.link = ddlink;
+        this.arrow = ddarrow;
         this.ddEdgeLayer = ddEdgeG;
         this.ddArrowLayer = ddArrowG;
         this.ddedge = ddlink;

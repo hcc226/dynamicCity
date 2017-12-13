@@ -129,8 +129,8 @@
       "to_nid": 8
     },
     {
-      "travel_record_num": 2,
-      "travel_device_num": 1,
+      "travel_record_num": 6,
+      "travel_device_num": 6,
       "from_nid": 6,
       "eid": 2,
       "to_nid": 8
@@ -150,8 +150,8 @@
       "to_nid": 0
     },
     {
-      "travel_record_num": 15,
-      "travel_device_num": 11,
+      "travel_record_num": 4,
+      "travel_device_num": 4,
       "from_nid": 10,
       "eid": 5,
       "to_nid": 7
@@ -178,15 +178,15 @@
       "to_nid": 0
     },
     {
-      "travel_record_num": 10,
-      "travel_device_num": 7,
+      "travel_record_num": 3,
+      "travel_device_num": 3,
       "from_nid": 12,
       "eid": 9,
       "to_nid": 0
     },
     {
-      "travel_record_num": 7,
-      "travel_device_num": 7,
+      "travel_record_num": 3,
+      "travel_device_num": 4,
       "from_nid": 5,
       "eid": 10,
       "to_nid": 1
@@ -213,15 +213,15 @@
       "to_nid": 1
     },
     {
-      "travel_record_num": 22,
-      "travel_device_num": 15,
+      "travel_record_num": 2,
+      "travel_device_num": 1,
       "from_nid": 11,
       "eid": 14,
       "to_nid": 3
     },
     {
-      "travel_record_num": 19,
-      "travel_device_num": 14,
+      "travel_record_num": 9,
+      "travel_device_num": 4,
       "from_nid": 4,
       "eid": 15,
       "to_nid": 3
@@ -262,22 +262,22 @@
       "to_nid": 8
     },
     {
-      "travel_record_num": 24,
-      "travel_device_num": 15,
+      "travel_record_num": 4,
+      "travel_device_num": 5,
       "from_nid": 14,
       "eid": 21,
       "to_nid": 11
     },
     {
-      "travel_record_num": 4,
+      "travel_record_num": 2,
       "travel_device_num": 1,
       "from_nid": 6,
       "eid": 22,
       "to_nid": 11
     },
     {
-      "travel_record_num": 20,
-      "travel_device_num": 18,
+      "travel_record_num": 3,
+      "travel_device_num": 2,
       "from_nid": 12,
       "eid": 23,
       "to_nid": 13

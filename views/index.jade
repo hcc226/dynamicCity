@@ -4,7 +4,7 @@ block content
   div(id='title')
     p Dynamic Urban Mobility Network
   div(id='maindiv')
-    div(id='userpanel')
+    //div(id='userpanel')
       fieldset
         hr
         div(class="form-group")
@@ -21,6 +21,29 @@ block content
       i-select(v-model="travel_default" style="width:200px" @on-change="changeTravelType(travel_default)")
         i-option(:value="item.value"  key="item.value" v-for="item in travel_type" )
     div(:class="mapClass" v-for="(item,index) in mapObj" )
+      div(:id = "'time-link-'+index" class = "time-link")
+        h6 TIME OF DAY
+        a(@click='changeTI(0)') Show All |
+        a(@click='changeTI(1)')  Hide All
+        br
+        a(@click='changeTI(2)') Light |
+        a(@click='changeTI(3)')  Dark
+        br
+        a(@click='changeTI(4)') CommuteM |
+        a(@click='changeTI(5)') CommuteA |
+        a(@click='changeTI(6)')  Nightlife
+        br
+        a(@click='changeTI(7)') Day |
+        a(@click='changeTI(8)')  Night |
+        a(@click='changeTI(9)')  Swing Shift
+      div(:id = "'time-selector-'+index" class="time-selector")
+      div(:id = "'time-option-'+index" class = "time-option")
+        i-select(v-model="year_default" placement='top' style="width:100px" @on-change = 'changeYear(year_default)')
+            i-option(:value="item.value"  key="item.value" v-for="item in years" )
+        i-select(v-model="month_default" placement='top' style="width:100px" @on-change="changeMonth(month_default)")
+            i-option(:value="item.value"  key="item.value" v-for="item in months" )
+        i-select(v-model="weekday_default" placement='top' style="width:100px" @on-change="changeDay(weekday_default)")
+            i-option(:value="item.value"  key="item.value" v-for="item in weekdays" )
       div(:id = "'map' +index" class="vamap")
       div(:id = "'flowOption' +index" class="flow")
         form
@@ -31,7 +54,17 @@ block content
           label
             input(name = "flowOption" type ="radio" value="out" @click='changeFlow(index,"out")')
             a(style="color:orange") out
-        br
-        br
-        vue-slider(ref="slider" v-model = "item.visulRadius" @drag-end='radiusUpdate(index)')
+        //vue-slider(ref="slider" v-model = "item.visulRadius" @drag-end='radiusUpdate(index)')
+        div(class = "slider-label")
+          h3 Radius
+          h3 StayNum
+          h3 FlowIn
+          h3 FlowOut
+          h3 Edge
+        div(class = 'slider')
+          Slider(v-model = "item.visualRadius" style = "width:100px" @on-change='changeFilter(index,item.visualRadius)')
+          Slider(:max="5000"   v-model = "item.nodeStayFilter"  style = "width:100px" @on-change='changeFilter(index,item.nodeStayFilter)')
+          Slider(v-model = "item.nodeInFilter" style = "width:100px" @on-change='changeFilter(index,item.nodeInFilter)')
+          Slider(v-model = "item.nodeOutFilter" style = "width:100px" @on-change='changeFilter(index,item.nodeOutFilter)')
+          Slider(:max="100" v-model = "item.edgefilter" style = "width:100px" @on-change='changeFilter(index,item.edgefilter)')
 
