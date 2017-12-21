@@ -17,6 +17,7 @@ class mapview{
         let self = this;
         this.mapid = id;
         this.ddnodeLayer = null;
+        this.node = null;
         this.map = new L.map(id,{
             zoomControl:false
         }).setView([40.2, 116.3], 9);
@@ -55,6 +56,8 @@ class mapview{
         });
         self.map.addControl(this.zoomControl);
         this.layercontrol = L.control.layers(self.baseLayers).addTo(self.map);
+
+
         //var overlay;
         /*this.overlay = new L.echartsLayer(self.map, echarts);
         //console.log(overlay);
@@ -701,6 +704,9 @@ console.log(nodeG)
             var value='hsl('+colors[h]+','+(sScale(s)*100)+'%,'+(lScale(l)*100)+'%)';
             return value
         }
+        function getRadius(num,min,max) {
+            return (num-min)/(max-min)*10 +2;
+        }
         let transform = d3.geoTransform({point: self.projectPoint}),
             path = d3.geoPath().projection(transform);
         var nums = []
@@ -714,7 +720,11 @@ console.log(nodeG)
             .data(graph.nodes)
             .enter().append("circle")
             .attr("fill",function (d) {
-                return getColor(1,0.5,(d.stay_device_num-min)/(max-min));
+                if(d.stay_device_num <= 0){
+                    return 'none';
+                }
+                /*return getColor(1,0.5,(d.stay_device_num-min)/(max-min));*/
+                return "steelblue"
             })
             .attr("class","node")
             .attr("id",function (d) {
@@ -783,7 +793,11 @@ console.log(nodeG)
                 })
                 .attr("r",function (d) {
                     /*return curZoom*d.stay_record_num/800/initZoom;*/
-                    return 5*curZoom/initZoom;
+                    if(d.stay_device_num <= 0 ){
+                        return 0;
+                    }
+                    var r = getRadius(d.stay_device_num,min,max)
+                    return curZoom*r/initZoom;
                 })
                 .style("opacity","0.8");
 
@@ -795,6 +809,9 @@ console.log(nodeG)
                 return pathData(point1, point2);
             })
                 .attr("stroke-width",function(d){
+                    if(d.travel_device_num<=0){
+                        return 0;
+                    }
                     if(curZoom*d.travel_device_num/initZoom>10)
                         return 10;
                     return curZoom*d.travel_device_num/initZoom;
@@ -807,6 +824,9 @@ console.log(nodeG)
                 return arrowData(point1, point2);
             })
                 .attr("stroke-width",function (d) {
+                    if(d.travel_device_num<=0){
+                        return 0;
+                    }
                     if(curZoom*d.travel_device_num/initZoom>10)
                         return 5;
                     return curZoom*d.travel_device_num/initZoom/2;
@@ -819,6 +839,9 @@ console.log(nodeG)
                 return pathData(point1, point2);
                 })
                 .attr("stroke-width",function(d){
+                    if(d.travel_device_num<=0){
+                        return 0;
+                    }
                     if(curZoom*d.travel_device_num/initZoom>10)
                         return 10;
                 return curZoom*d.travel_device_num/initZoom;
@@ -831,6 +854,9 @@ console.log(nodeG)
                 return arrowData(point1, point2);
             })
                 .attr("stroke-width",function (d) {
+                    if(d.travel_device_num<=0){
+                        return 0;
+                    }
                     if(curZoom*d.travel_device_num/initZoom>10)
                         return 5;
                     return curZoom*d.travel_device_num/initZoom/2;
@@ -913,7 +939,7 @@ console.log(nodeG)
                     * Math.cos(lat2) * sb2 * sb2));
             return d;*/
         }
-        this.node.attr("display",function (d) {
+       /* this.node.attr("display",function (d) {
             let distance = getDistance(d.y,d.x,39.975,116.345)
             console.log(distance)
             if(d.id==438){
@@ -927,9 +953,25 @@ console.log(nodeG)
             else {
                 return "block"
             }
-        });
+        });*/
         console.log(visual_nodes)
         this.link.attr("display",function (d) {
+            if( d.travel_device_num < edgefilter){
+                return "none"
+            }
+            else {
+                return "block"
+            }
+        });
+        this.arrow.attr("display",function (d) {
+            if( d.travel_device_num < edgefilter){
+                return "none"
+            }
+            else {
+                return "block"
+            }
+        });
+ /*       this.link.attr("display",function (d) {
             let distance = getDistance(d.from_y,d.from_x,39.975,116.345);
             if(distance>radius || d.travel_record_num < edgefilter){
                 return "none"
@@ -946,9 +988,9 @@ console.log(nodeG)
             else {
                 return "block"
             }
-        });
+        });*/
 
-        this.link1.attr("display",function (d) {
+       /* this.link1.attr("display",function (d) {
             let distance = getDistance(d.to_y,d.to_x,39.975,116.345);
             if(distance>radius || d.travel_record_num < edgefilter){
                 return "none"
@@ -965,7 +1007,7 @@ console.log(nodeG)
             else {
                 return "block"
             }
-        });
+        });*/
 
     }
     changeVisualRadius(radius){
@@ -1078,9 +1120,30 @@ console.log(nodeG)
                 else return 'none'
         })
     }
+    /*removeLayer(layer){
+        this.map.removeLayer(layer);
+    }*/
+
+    // color each district
     drawDistrict(data,bdData){
         let self = this;
         var num=[];
+        if(this.ddnodeLayer){
+            console.log("removedd")
+            this.map.removeLayer(this.ddnodeLayer);
+        }
+        if(data.nodes.length === 0 || data.nodes[1].stay_device_num === 0){
+            console.log("nodes is null")
+            this.ddnodeLayer = L.geoJSON(bdData,{
+                style:function (feature) {
+                    return {color:'grey',
+                        weight:1,
+                        fillColor:'none'
+                    };
+                }
+            }).addTo(self.map);
+            return ;
+        }
         function getColor(h,s,l) {
             var colors=[204,204];
             //var colors=204;
@@ -1099,13 +1162,20 @@ console.log(nodeG)
         data.nodes.forEach(function (t) {
             num.push(t.stay_device_num);
         })
+        console.log(num);
         var min = d3.min(num);
         var max = d3.max(num);
         let features =bdData.features;
         features.forEach(function (feature,index) {
-            bdData.features[index].properties.num = num[index];
-            bdData.features[index].properties.color = getColor(1,0.5,(num[index]-min)/(max-min));
-        })
+            for(var i=0;i<data.nodes.length;i++){
+               var  node = data.nodes[i];
+                if(node.x == bdData.features[index].properties.cp[0]
+                && node.y == bdData.features[index].properties.cp[1]){
+                    bdData.features[index].properties.num = node.stay_device_num;
+                    bdData.features[index].properties.color = getColor(1,0.5,(node.stay_device_num-min)/(max-min));
+                }
+            }
+             });
         this.ddnodeLayer = L.geoJSON(bdData,{
             style:function (feature) {
                 return {color:'grey',
@@ -1118,10 +1188,17 @@ console.log(nodeG)
     drawDisDis(graph,lines){
         let self = this;
         var initZoom = self.map.getZoom();
+
         let g = d3.select(self.map.getPanes().overlayPane).select("svg").select("g");
+        g.select(".node-dd-layer").remove();
+        g.select(".edge-dd-layer").remove();
+        g.select(".arrow-dd-layer").remove();
         let ddnodeG =  g.append("g").attr("class","node-dd-layer");
         let ddEdgeG = g.append("g").attr("class","edge-dd-layer");
         let ddArrowG = g.append("g").attr("class","arrow-dd-layer");
+      /* let ddnodeG = this.ddnodeG;
+       let ddEdgeG = this.ddEdgeG;
+       let ddArrowG = this.ddArrowG;*/
         var num = [];
         graph.nodes.forEach(function (t) {
             num.push(t.stay_device_num);
@@ -1141,6 +1218,9 @@ console.log(nodeG)
                 .range(lRange);
             var value='hsl('+colors[h]+','+(sScale(s)*100)+'%,'+(lScale(l)*100)+'%)';
             return value
+        }
+        function getRadius(num,min,max) {
+            return (num-min)/(max-min)*10+2;
         }
         g.selectAll(".node").remove();
         g.selectAll(".edge").remove();
@@ -1197,17 +1277,18 @@ console.log(nodeG)
         let transform = d3.geoTransform({point: self.projectPoint}),
             path = d3.geoPath().projection(transform);
 
-        let node = ddnodeG.selectAll("circle")
+        /*let node = ddnodeG.selectAll("circle")
             .data(graph.nodes)
             .enter().append("circle")
             .attr("fill",function (d) {
-                return getColor(1,0.5,(d.stay_device_num-min)/(max-min));
+                //return getColor(1,0.5,(d.stay_device_num-min)/(max-min));
+                return "steelblue"
             })
             .attr("class","node")
             .attr("id",function (d) {
                 return "node_"+d.id
             });
-
+*/
         let ddlink = ddEdgeG.selectAll("path")
             .data(lines)
             .enter().append("path")
@@ -1239,24 +1320,43 @@ console.log(nodeG)
         self.map.on("zoomend",function() {
             reset();
         });
+        var nums = [];
+        lines.forEach(function (line) {
+            nums.push(line.travel_device_num);
+        })
+        console.log(nums);
+        var min = d3.min(nums);
+        var max = d3.max(nums);
+        console.log(min)
+        console.log(max)
+        function getWidth(num,min,max) {
+            return (num-min)/(max-min)*10+0.5;
+        }
         reset();
+
         function reset() {
             console.log("reset!")
             var curZoom = self.map.getZoom();
+            console.log(curZoom);
+            console.log(initZoom);
             g.style('display', 'block');
 
-            node.attr("transform",function (d) {
+            /*node.attr("transform",function (d) {
 
                 var pos = self.map.latLngToLayerPoint(new L.LatLng(d.y,d.x));
 
                 return "translate("+pos.x+","+pos.y+")";
             })
                 .attr("r",function (d) {
-                    /*return curZoom*d.stay_record_num/800/initZoom;*/
-                    return 5*curZoom/initZoom;
+                    /!*return curZoom*d.stay_record_num/800/initZoom;*!/
+                    if(d.stay_device_num <= 0 ){
+                        return 0;
+                    }
+                    var r = getRadius(d.stay_device_num,min,max)
+                    return curZoom*r/initZoom;
                 })
                 .style("opacity","0.8");
-
+*/
 
             ddlink.attr("d",function (d) {
                 var point1 =  self.map.latLngToLayerPoint(new L.LatLng(d.from_y, d.from_x));
@@ -1265,9 +1365,19 @@ console.log(nodeG)
                 return pathData(point1, point2);
             })
                 .attr("stroke-width",function(d){
-                    if(curZoom*d.travel_device_num/initZoom>10)
+                    /*if(curZoom == 9){
+                        var width = getWidth(d.travel_device_num,min,max);
+                        return (curZoom)*width/initZoom/2;
+                    }*/
+                    if(d.travel_device_num == 0){
+                        return 0;
+                    }
+                    var width = getWidth(d.travel_device_num,min,max);
+                   // console.log((curZoom+20)*width/initZoom);
+                    return (curZoom+20)*width/initZoom;
+                   /* if(curZoom*d.travel_device_num/initZoom>10)
                         return 10;
-                    return curZoom*d.travel_device_num/initZoom;
+                    return curZoom*d.travel_device_num/initZoom;*/
                 });
 
             //.attr("marker-end","url(#arrow)");
@@ -1277,12 +1387,24 @@ console.log(nodeG)
                 return arrowData(point1, point2);
             })
                 .attr("stroke-width",function (d) {
-                    if(curZoom*d.travel_device_num/initZoom>10)
+                    if(d.from_nid == d.to_nid){
+                        return 0;
+                    }
+                    if(d.travel_device_num == 0){
+                        return 0;
+                    }
+                   /* if(curZoom = 9){
+                        var width = getWidth(d.travel_device_num,min,max);
+                        return (curZoom)*width/initZoom/2;
+                    }*/
+                    var width = getWidth(d.travel_device_num,min,max);
+                    return (curZoom+20)*width/initZoom;
+                    /*if(curZoom*d.travel_device_num/initZoom>10)
                         return 5;
-                    return curZoom*d.travel_device_num/initZoom/2;
+                    return curZoom*d.travel_device_num/initZoom/2;*/
                 });
         }
-        this.node = node;
+        //this.ddnode = node;
         this.link = ddlink;
         this.arrow = ddarrow;
         this.ddEdgeLayer = ddEdgeG;
@@ -1291,5 +1413,6 @@ console.log(nodeG)
         this.ddarrow = ddarrow;
         }
     }
+    //testout
 
 export {mapview}

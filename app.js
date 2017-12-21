@@ -7,8 +7,15 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
 var app = express();
+
+
+/*
+var ServerConf= {
+    ApiHost: "192.168.1.42",
+    ServicePort:3008
+};
+*/
 
 var webpack = require('webpack'),
     webpackDevMiddleware = require('webpack-dev-middleware'),
@@ -59,6 +66,15 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+var port = "3008"
+var reload = require('reload');
+var http = require('http');
+var server = http.createServer(app);
+reload(server, app);
+server.listen(port, function(){
+    console.log('App (dev) is now running on port '+port+'!');
 });
 
 module.exports = app;

@@ -38,12 +38,15 @@ block content
         a(@click='changeTI(9)')  Swing Shift
       div(:id = "'time-selector-'+index" class="time-selector")
       div(:id = "'time-option-'+index" class = "time-option")
-        i-select(v-model="year_default" placement='top' style="width:100px" @on-change = 'changeYear(year_default)')
+        //i-select(v-model="year_default" placement='top' style="width:100px;float:left" @on-change = 'changeYear(year_default)')
             i-option(:value="item.value"  key="item.value" v-for="item in years" )
-        i-select(v-model="month_default" placement='top' style="width:100px" @on-change="changeMonth(month_default)")
+        //i-select(v-model="month_default" placement='top' style="width:100px;float:left" @on-change="changeMonth(month_default)")
             i-option(:value="item.value"  key="item.value" v-for="item in months" )
-        i-select(v-model="weekday_default" placement='top' style="width:100px" @on-change="changeDay(weekday_default)")
+        //i-select(v-model="weekday_default" placement='top' style="width:100px;float:left" @on-change="changeDay(weekday_default)")
             i-option(:value="item.value"  key="item.value" v-for="item in weekdays" )
+        //i-button(type="primary" shape="circle" size="small" @click = 'brush()')
+          span(v-if="!loading") Brush
+          span(v-else) Zoom
       div(:id = "'map' +index" class="vamap")
       div(:id = "'flowOption' +index" class="flow")
         form
@@ -62,9 +65,9 @@ block content
           h3 FlowOut
           h3 Edge
         div(class = 'slider')
-          Slider(v-model = "item.visualRadius" style = "width:100px" @on-change='changeFilter(index,item.visualRadius)')
-          Slider(:max="5000"   v-model = "item.nodeStayFilter"  style = "width:100px" @on-change='changeFilter(index,item.nodeStayFilter)')
-          Slider(v-model = "item.nodeInFilter" style = "width:100px" @on-change='changeFilter(index,item.nodeInFilter)')
-          Slider(v-model = "item.nodeOutFilter" style = "width:100px" @on-change='changeFilter(index,item.nodeOutFilter)')
+          Slider(v-model = "item.visualRadius" style = "width:100px" @on-change='changeFilter(index,item.visualRadius)' disabled=true)
+          Slider(:max="5000"   v-model = "item.nodeStayFilter"  style = "width:100px" @on-change='changeFilter(index,item.nodeStayFilter)' disabled=true)
+          Slider(v-model = "item.nodeInFilter" style = "width:100px" @on-change='changeFilter(index,item.nodeInFilter)' disabled=true)
+          Slider(v-model = "item.nodeOutFilter" style = "width:100px" @on-change='changeFilter(index,item.nodeOutFilter)' disabled=true)
           Slider(:max="100" v-model = "item.edgefilter" style = "width:100px" @on-change='changeFilter(index,item.edgefilter)')
 
