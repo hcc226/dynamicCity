@@ -7,11 +7,13 @@ a {
   color: #00B7FF;
 }
 
-p{
-  font-size: 36px;
-  font-weight: bold;
-  color: darkgoldenrod;
-  margin-top: -7px;
+#title p{
+  font-size: 20px;
+  position: fixed;
+  /*font-weight: bold;*/
+  color: #EAEAEA;
+  top: 1vh;
+  left:15px;
 }
 svg{
   float:left;
@@ -31,32 +33,99 @@ svg{
   width:0%;
 }
 .time-link{
-    height: 90px;
-    width:240px;
-    background-color: lightgrey;
+  border-radius: 10px;
+    height: 120px;
+    width:210px;
+  background-color: #FFFFFF;
+  opacity: 0.85;
     position: absolute;
-    bottom: 265px;
+    bottom: 105px;
     left:10px;
     z-index: 2;
+  border-right: 0.5px solid #D1D1D1;
+}
+.time-link p{
+  margin-top:10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #333333;
+  font-weight: bold;
+}
+.time-link a{
+  font-size: 12px;
+  color: #777777;
 }
 .time-selector{
-  height: 150px;
-  width: 240px;
-  background-color: lightgrey;
+  height: 120px;
+  width: 160px;
+  background-color: #FFFFFF;
+  opacity: 0.85;
     position: absolute;
-  bottom: 115px;
-  left:10px;
+  bottom: 105px;
+  left:220px;
   z-index: 2;
+  border-radius: 10px;
 }
+
+.node-dd-layer{
+  z-index: 100;
+}
+.edge-dd-layer{
+  z-index:99;
+}
+.arrow-dd-layer{
+  z-index: 98;
+}
+
+.leaflet-pane > svg {
+  pointer-events: auto ;
+}
+
 .time-option{
-  height: 100px;
-  width: 700px;
+  height: 80px;
+  width: 900px;
   float:left;
-  background-color: lightgrey;
+  background-color: #FFFFFF;
+  opacity: 0.85;
   position: absolute;
-  bottom: 10px;
+  bottom: 15px;
   left:10px;
   z-index: 2;
+  border-radius: 10px;
+}
+.time-option-link{
+  float:left;
+}
+.time-option p{
+  margin-top:5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333333;
+  font-weight: bold;
+}
+.time-option a{
+  font-size: 12px;
+  color: #777777;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.timeAxis{
+  margin-left: 200px;
+
+}
+.left-bar{
+  margin-left: 15px;
+float: left;
+  height: 100%;
+  border-left: 0.5px solid #D1D1D1;
+ /*top: 10px;*/
+  /*background-color: silver;*/
+}
+.right-bar{
+  margin-left: 870px;
+  height: 100%;
+  /*top: 10px;*/
+  /*background-color: silver;*/
 }
 /*#map0{
   width:80%;
@@ -94,32 +163,101 @@ button{
   right:5px;
 }
 .flow{
-  width: 230px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   position: absolute;
-  background-color: rgb(250,250,250);
-  opacity: 1;
+  background-color: #FFFFFF;
+  opacity: 0.85;
   top:10px;
   left:10px;
   z-index:2;
+  border-radius: 10px;
 }
 .slider-label{
   width:10%;
   height: 10%;
   position: absolute;
-  top:65px;
+  top:150px;
   z-index:2;
+}
+.com-slider-label{
+  width:10%;
+  height: 10%;
+  position: absolute;
+  top:271px;
+  z-index:2;
+}
+.flow p{
+  font-size: 10px;
+  color: #333333;
+  margin-left: 10px;
+  margin-top: 3px;
+}
+.flow a{
+  font-size: 14px;
+  color: #333333;
+}
+
+.edge-axis{
+  height: 100px;
+  width: 300px;
+}
+.com-axis{
+  height: 100px;
+  width: 300px;
+
 }
 .slider{
   float:left;
   position: absolute;
-  width: 7%;
+  width: 6%;
   height: 10%;
-  left:120px;
+  top:48%;
+  left:45px;
+}
+.com-slider{
+  float:left;
+  position: absolute;
+  width: 6%;
+  height: 10%;
+  top:88%;
+  left:45px;
 }
 .ivu-slider{
-  margin-top: 22px;
+  top: 17px;
+  color: #ED5858;
 }
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.tooltip{
+  position: absolute;
+  width: 120;
+  height: auto;
+  font-family: simsun;
+  font-size: 14px;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+input[type="range"] {
+  position: absolute;
+  top: 40%;
+  transform: rotate(270deg);
+}
+/*.ivu-slider-bar{
+  background: #ED5858;
+}
+.ivu-slider-button{
+  border: #ED5858;
+}*/
 /*#graphSVG{
   height: 800px;
   width:1680px;
